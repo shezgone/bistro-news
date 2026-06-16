@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shezgone/bistro-news/schemas/event_schema.json",
+  "title": "BISTRO-News Event Extraction Output",
+  "description": "기사 1건에서 추출하는 구조화 이벤트. Step A/B/C/D 병합 결과의 출력 계약(contract).",
+  "type": "object",
+  "required": ["core_event", "background_events", "consequence_events", "entities", "extraction_quality"],
+  "properties": {
+    "core_event": {
+      "description": "기사가 작성된 직접적 원인인 단일 핵심 사건. 조건 미충족 시 null.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["who", "what", "when", "where", "event_type", "is_factual", "is_ongoing", "select_reason"],
+          "properties": {
+            "who": { "type": ["string", "null"], "description": "주도 행위자 1개" },
+            "what": { "type": ["string", "null"], "description": "구체적 행위·결정 (수치 포함)" },
+            "when": { "type": ["string", "null"] },
+            "where": { "type": ["string", "null"] },
+            "why": { "type": ["string", "null"], "description": "기사에 명시된 경우만" },
+            "how": { "type": ["string", "null"], "description": "기사에 명시된 경우만" },
+            "event_type": {
+              "type": "string",
+              "enum": ["MONETARY_POLICY", "FISCAL_POLICY", "TRADE", "SUPPLY_CHAIN", "FINANCIAL_MARKET", "GEOPOLITICAL", "CORPORATE", "MACRO_INDICATOR", "REGULATION", "OTHER"]
+            },
+            "is_factual": { "type": "boolean", "description": "익명/미확인/기자해석 출처면 false" },
+            "is_ongoing": { "type": "boolean" },
+            "select_reason": { "type": "string", "description": "core로 선택한 이유 한 문장" }
+          }
+        }
+      ]
+    },
+    "background_events": {
+      "description": "Core 이전 시점의 선행 원인·배경. 사실만 허용.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["who", "what", "when", "where", "relation_to_core", "is_factual"],
+        "properties": {
+          "who": { "type": ["string", "null"] },
+          "what": { "type": ["string", "null"] },
+          "when": { "type": ["string", "null"] },
+          "where": { "type": ["string", "null"] },
+          "relation_to_core": {
+            "type": "string",
+            "enum": ["CAUSE", "PRIOR_CONTEXT", "POLICY_HISTORY", "CONCURRENT_POLICY"]
+          },
+          "is_factual": { "type": "boolean" }
+        }
+      }
+    },
+    "consequence_events": {
+      "description": "Core 이후 예상 결과·영향. 추론 허용하되 낮은 confidence + is_stated_in_article 플래그.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["who", "what", "where", "consequence_type", "time_horizon", "is_stated_in_article", "confidence"],
+        "properties": {
+          "who": { "type": ["string", "null"], "description": "영향받는 주체" },
+          "what": { "type": ["string", "null"], "description": "예상·관측된 효과" },
+          "where": { "type": ["string", "null"], "description": "영향받는 시장·지역" },
+          "consequence_type": {
+            "type": "string",
+            "enum": ["IMMEDIATE_MARKET", "POLICY_RESPONSE", "ECONOMIC_IMPACT", "SPILLOVER", "FINANCIAL_STABILITY"]
+          },
+          "time_horizon": {
+            "type": "string",
+            "enum": ["IMMEDIATE", "SHORT_TERM", "MEDIUM_TERM", "LONG_TERM"],
+            "description": "IMMEDIATE<1M, SHORT 1-3M, MEDIUM 3-12M, LONG>12M"
+          },
+          "is_stated_in_article": { "type": "boolean" },
+          "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0, "description": "0.3 미만 포함 금지" }
+        }
+      }
+    },
+    "entities": {
+      "type": "object",
+      "required": ["organizations", "countries", "markets", "persons"],
+      "properties": {
+        "organizations": { "type": "array", "items": { "type": "string" } },
+        "countries": { "type": "array", "items": { "type": "string" } },
+        "markets": { "type": "array", "items": { "type": "string" } },
+        "persons": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "extraction_quality": {
+      "type": "object",
+      "required": ["core_event_completeness", "has_quantitative_data", "extraction_confidence", "evidence_quality", "flags"],
+      "properties": {
+        "core_event_completeness": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "has_quantitative_data": { "type": "boolean" },
+        "extraction_confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "evidence_quality": { "type": "string", "enum": ["H", "M", "L"], "description": "L이면 core_event는 null이어야 함" },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["AMBIGUOUS_CORE", "LOW_DETAIL", "FORECAST_ONLY", "MARKET_REACTION_LED", "ONGOING_SITUATION"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.venv*/
+__pycache__/
+*.pyc
+*.pyo
+
+# Large data files
+*.npz
+*.pt
+*.parquet
+
+# News / event data dumps
+data/raw/
+data/*.jsonl
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Local Claude settings & harness observation log
+.claude/settings.local.json
+.claude/harness.log
