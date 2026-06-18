@@ -34,16 +34,26 @@
 
 ```
 bistro-news/
-├── README.md                  # 이 문서
-├── CLAUDE.md                  # 파이프라인 상세 스펙 (단일 소스 오브 트루스)
-├── docs/                      # 요약·보고·회의 자료
-│   └── 2026-06-17_기획-작업-요약.md
-├── prompts/                   # 이벤트 추출 프롬프트 (기획팀 주 작업 영역)
-│   └── README.md
-├── schemas/                   # 이벤트 출력 JSON 스키마 (추출 결과 계약)
-│   └── event_schema.json
-└── data/                      # 원본/중간 데이터 (대용량·본문은 git 제외)
+├── README.md  CLAUDE.md           # 개요 / 파이프라인 상세 스펙(단일 소스 오브 트루스)
+├── pyproject.toml                 # 패키지·의존성 (pip install -e ".[all]")
+├── prompts/                       # 이벤트 추출 프롬프트 (기획팀 주 작업 영역)
+├── schemas/                       # 이벤트 출력 JSON 스키마 (추출 결과 계약)
+├── src/bistro_news/               # 파이프라인 패키지 (CLAUDE.md 6단계)
+│   ├── io.py  llm/                #   공용: JSON-ish 파서 / 모델 클라이언트·프롬프트 로더
+│   ├── ingest/                    #   1. 수집 + 중복제거 (SHA256, BGE-M3)
+│   ├── extract/                   #   2. LLM 4-step 추출
+│   ├── cluster/                   #   3. 이벤트 클러스터링
+│   ├── graph/                     #   4. 인과 그래프 + 3단계 엣지 필터
+│   ├── index/                     #   5. 인덱스화 (centrality Track A/B)
+│   └── validate/                  #   6. 역방향 검증 (Granger / PCMCI / lead-lag)
+├── eval/                          # 추출 품질 정량 평가 (패키지 import)
+│   ├── score.py  run_extraction.py  add_article.py  extract_from_xlsx.py
+│   └── gold/  predictions/  report.md  models.example.json
+├── data/                          # 원본/중간 데이터 (내용 git 제외, 골격만)
+└── docs/                          # 요약·보고 / spec(기획 원본, git 제외) / assets
 ```
+
+> 현재 구현 코드는 `extract`(평가 경로)뿐이고 나머지 단계는 README 스텁이다. `src/bistro_news/<stage>/` 가 각 단계 코드의 지정 위치.
 
 ---
 

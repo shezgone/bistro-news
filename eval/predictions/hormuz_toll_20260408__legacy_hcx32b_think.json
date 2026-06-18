@@ -1,0 +1,22 @@
+{
+  "article_id": "hormuz_toll_20260408",
+  "title": "호르무즈 통행료 체계 / 美·이란 휴전",
+  "config_id": "legacy_hcx32b_think",
+  "family": "legacy_single",
+  "model": "HCX-32B(Think)",
+  "core_event": {
+    "who": "미국과 이란",
+    "what": "호르무즈 해협 통과 선박에 대한 통행세 공동 징수 합의",
+    "when": "2026년 4월 7일",
+    "where": "호르무즈 해협",
+    "why": "안전한 항행 확보 및 재건 비용 조달",
+    "how": "이란이 징수한 통행세를 전후 재건 비용으로 사용하는 조건으로 미국과 공동 부담",
+    "event_type": "지정학적",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "기사의 핵심 사건으로 글로벌 에너지 무역에 직접적 영향을 미치는 구체적 합의"
+  },
+  "parse_status": "json_wrapped+inner",
+  "raw_core": " \"who\": \"미국과 이란\",\n    \"what\": \"호르무즈 해협 통과 선박에 대한 통행세 공동 징수 합의\",\n    \"when\": \"2026년 4월 7일\",\n    \"where\": \"호르무즈 해협\",\n    \"why\": \"안전한 항행 확보 및 재건 비용 조달\",\n    \"how\": \"이란이 징수한 통행세를 전후 재건 비용으로 사용하는 조건으로 미국과 공동 부담\",\n    \"event_type\": \"지정학적\",\n    \"is_factual\": true,\n    \"is_ongoing\": false,\n    \"select_reason\": \"기사의 핵심 사건으로 글로벌 에너지 무역에 직접적 영향을 미치는 구체적 합의\"",
+  "raw_block": " \"who\": \"미국과 이란\",\n    \"what\": \"호르무즈 해협 통과 선박에 대한 통행세 공동 징수 합의\",\n    \"when\": \"2026년 4월 7일\",\n    \"where\": \"호르무즈 해협\",\n    \"why\": \"안전한 항행 확보 및 재건 비용 조달\",\n    \"how\": \"이란이 징수한 통행세를 전후 재건 비용으로 사용하는 조건으로 미국과 공동 부담\",\n    \"event_type\": \"지정학적\",\n    \"is_factual\": true,\n    \"is_ongoing\": false,\n    \"select_reason\": \"기사의 핵심 사건으로 글로벌 에너지 무역에 직접적 영향을 미치는 구체적 합의\"\n\"who\": \"미국과 이란\",\n      \"what\": \"2주간 휴전 협상 타결\",\n      \"when\": \"2026년 4월 7일\",\n      \"where\": \"호르무즈 해협\",\n      \"relation_to_core\": \"선행 원인\",\n      \"is_factual\": true\n \"who\": \"유엔해양법협약(UNCLOS)\",\n      \"what\": \"국제 해협에서 통행료 부과 원칙적 금지\",\n      \"when\": \"지속적\",\n      \"where\": \"글로벌\",\n      \"relation_to_core\": \"정책 역사\",\n      \"is_factual\": true\n \"who\": \"한국 등 중동 에너지 수입국\",\n      \"what\": \"에너지 수입 비용 증가 부담\",\n      \"where\": \"글로벌 에너지 시장\",\n      \"consequence_type\": \"경제적 영향\",\n      \"time_horizon\": \"단기\",\n      \"is_stated_in_article\": true,\n      \"confidence\": 0.7\n\"who\": \"글로벌 해운업계\",\n      \"what\": \"다른 주요 해협에도 유사 관리비 제도 도입 가능성\",\n      \"where\": \"국제 항로\",\n      \"consequence_type\": \"파급효과\",\n      \"time_horizon\": \"중기\",\n      \"is_stated_in_article\": true,\n      \"confidence\": 0.6\n    \"organizations\": [\"AP통신\", \"유엔\"],\n    \"countries\": [\"미국\", \"이란\", \"한국\", \"오만\"],\n    \"markets\": [\"에너지 시장\", \"국제 해운시장\"],\n    \"persons\": [\"재러드 쿠슈너\"]\n\"core_event_completeness\": 0.8,\n    \"has_quantitative_data\": false,\n    \"extraction_confidence\": 0.85,\n    \"evidence_quality\": \"H\",\n    \"flags\": [\"AMBIGUOUS_CORE\"]"
+}

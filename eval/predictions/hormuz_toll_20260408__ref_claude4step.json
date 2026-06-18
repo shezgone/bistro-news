@@ -1,0 +1,24 @@
+{
+  "article_id": "hormuz_toll_20260408",
+  "title": "호르무즈 통행료 체계 / 美·이란 휴전",
+  "config_id": "ref_claude4step",
+  "family": "new_4step",
+  "model": "Claude (Opus 4.8, bootstrap)",
+  "is_reference": true,
+  "note": "⚠️ 부트스트랩 reference. reference 모델 = Claude Opus (Sonnet 미사용 확정). 이 세션의 Opus 4.8 이 4-step 프롬프트를 수동 적용해 생성 → 평가자 자가생성이라 silver/스모크용. 정식화 시 '독립' API Opus 호출(자가생성 아님)로 교체 권장.",
+  "core_event": {
+    "who": "미국·이란",
+    "what": "2주 휴전 협상 타결 및 호르무즈 해협 조건부 항행 재개",
+    "when": "2026-04-07",
+    "where": "호르무즈 해협",
+    "why": "트럼프 대통령 '문명 파괴' 예고 시한 임박에 따른 협상 타결",
+    "how": "2주 휴전 기간 이란군 협조·기술적 제한 조건 하 안전 항행 허용",
+    "event_type": "GEOPOLITICAL",
+    "is_factual": true,
+    "is_ongoing": true,
+    "select_reason": "기사 작성의 직접 원인인 확정된 휴전 타결로 C1~C4 충족. 통행세 합의는 AP 익명 관계자 인용+'구상/해석'이라 is_factual:false → core 제외."
+  },
+  "parse_status": "authored_opus",
+  "raw_core": "{\"who\":\"미국·이란\",\"what\":\"2주 휴전 협상 타결 및 호르무즈 해협 조건부 항행 재개\",\"event_type\":\"GEOPOLITICAL\",\"is_factual\":true}",
+  "raw_block": "# STEP A (Core)\n{\n  \"candidates\": [\n    {\"what\":\"미국·이란 호르무즈 통행세 공동징수 합의\",\"is_factual\":false,\"factual_basis\":\"AP통신 역내 익명 관계자 인용 + '구상을 가지고 있다'·'것으로 해석된다' (출처+행위 2단계 모두 비사실)\"},\n    {\"what\":\"2주 휴전 협상 타결\",\"is_factual\":true,\"factual_basis\":\"트럼프 시한 88분 전 극적 타결 명시\"},\n    {\"what\":\"이란 외무장관 성명: 휴전 2주간 안전 항행 가능 발표\",\"is_factual\":true,\"factual_basis\":\"압바스 아라그치 이란 외무장관 공식 성명\"}\n  ],\n  \"core_event\": {\"who\":\"미국·이란\",\"what\":\"2주 휴전 협상 타결 및 호르무즈 해협 조건부 항행 재개\",\"when\":\"2026-04-07\",\"where\":\"호르무즈 해협\",\"why\":\"트럼프 '문명 파괴' 예고 시한 임박\",\"how\":\"2주 휴전 기간 이란군 협조·기술적 제한 조건 하 안전 항행 허용\",\"event_type\":\"GEOPOLITICAL\",\"is_factual\":true,\"is_ongoing\":true,\"select_reason\":\"기사 존재의 직접 원인인 확정 휴전 타결, C1~C4 충족\"}\n}\n\n# STEP B (Background)\n{\n  \"background_events\": [\n    {\"who\":\"미국·이란\",\"what\":\"호르무즈 해협 봉쇄로 세계 경제 압박 지속\",\"when\":\"협상 이전\",\"where\":\"호르무즈 해협\",\"relation_to_core\":\"PRIOR_CONTEXT\",\"is_factual\":true},\n    {\"who\":\"도널드 트럼프\",\"what\":\"이란 '문명 파괴' 예고(시한 통보)\",\"when\":\"2026-04-07\",\"where\":\"미국\",\"relation_to_core\":\"CAUSE\",\"is_factual\":true},\n    {\"who\":\"UNCLOS\",\"what\":\"국제 해협 통과통항권 보장·연안국 통행료 부과 금지\",\"when\":null,\"where\":\"국제\",\"relation_to_core\":\"POLICY_HISTORY\",\"is_factual\":true}\n  ]\n}\n\n# STEP C (Consequence)\n{\n  \"consequence_events\": [\n    {\"who\":\"한국 등 중동 에너지 수입국\",\"what\":\"에너지 조달 비용 부담 증가\",\"where\":\"국제 에너지 시장\",\"consequence_type\":\"ECONOMIC_IMPACT\",\"time_horizon\":\"SHORT_TERM\",\"is_stated_in_article\":true,\"confidence\":0.7},\n    {\"who\":\"호르무즈 해협 통과 선박\",\"what\":\"통행료 부과 적용(미·이란 공동징수 구상)\",\"where\":\"호르무즈 해협\",\"consequence_type\":\"ECONOMIC_IMPACT\",\"time_horizon\":\"SHORT_TERM\",\"is_stated_in_article\":true,\"confidence\":0.55},\n    {\"who\":\"세계 주요 해협 연안국\",\"what\":\"유사 통행료·관리비 제도 도입 확산\",\"where\":\"국제 주요 해협\",\"consequence_type\":\"SPILLOVER\",\"time_horizon\":\"MEDIUM_TERM\",\"is_stated_in_article\":true,\"confidence\":0.5}\n  ]\n}\n\n# STEP D (Merge + Critic)\n{\n  \"extraction_quality\": {\"core_event_completeness\":0.9,\"has_quantitative_data\":false,\"extraction_confidence\":0.85,\"evidence_quality\":\"M\",\"critic_scores\":{\"temporal_direction\":3,\"field_completeness\":3,\"causal_logic\":3,\"total\":9,\"verdict\":\"pass\"},\"flags\":[\"ONGOING_SITUATION\"]}\n}"
+}

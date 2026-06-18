@@ -1,0 +1,76 @@
+{
+  "_about": "수작업 정답(gold). 기사 2건에 대해 CLAUDE.md/Step 프롬프트의 명시적 규칙으로 도출 가능한 판단만 기록. 점수가 아닌 '정오' 기준점. n=2 — 일반화 금지, 대표성 없음. 새 기사는 동일 형식으로 추가.",
+  "articles": {
+    "hormuz_toll_20260408": {
+      "title": "호르무즈 통행료 체계 / 美·이란 휴전",
+      "core": {
+        "accepted_topic_keywords": ["휴전", "휴전 협상 타결", "항행 재개"],
+        "event_type": "GEOPOLITICAL",
+        "is_factual": true,
+        "rejected_as_core": [
+          {
+            "topic_keywords": ["통행료", "통행세", "징수"],
+            "correct_is_factual": false,
+            "reason": "통행료 부과 합의는 ①AP통신 익명 역내 관계자 인용(미확인 보도)+②'구상/것으로 해석된다'(행위 미확정) → is_factual 2단계 판별 모두 false. 따라서 core 자격 없음(C3 위반). 트럼프 발언도 '구상을 가지고 있다'로 미확정."
+          }
+        ]
+      }
+    },
+    "transit_tf_20260408": {
+      "title": "출퇴근 혼잡완화 범정부 TF 발족",
+      "core": {
+        "accepted_topic_keywords": ["TF 발족", "범정부 TF", "태스크포스"],
+        "event_type": "REGULATION",
+        "acceptable_event_types": ["REGULATION", "FISCAL_POLICY", "OTHER"],
+        "is_factual": true,
+        "note": "국토부 대광위가 '발족했다고 8일 밝혔다' = 실명 기관의 완료된 공식 행위 → is_factual true, core 적격(C1~C4 충족).",
+        "rejected_as_core": [
+          {
+            "topic_keywords": ["대책 발표", "이달 말", "인센티브 부여 검토"],
+            "correct_is_factual": false,
+            "reason": "'이달 말 발표 계획' '검토 중' = 계획·검토 단계(예정/검토 표현) → is_factual false. core 불가."
+          }
+        ]
+      }
+    },
+    "bok_rate_hold_20260410": {
+      "title": "한은 4월 기준금리 연 2.50% 동결",
+      "core": {
+        "accepted_topic_keywords": ["기준금리", "동결", "2.50"],
+        "event_type": "MONETARY_POLICY",
+        "is_factual": true,
+        "note": "금통위 공식 결정, 완료된 사실. 선행/후속 이벤트는 기사에 없음 → background/consequence 빈 배열이 정상."
+      }
+    },
+    "semicon_tariff_20260118": {
+      "title": "미국 100% 관세 압박 / 반도체 추가투자 요구",
+      "core": {
+        "accepted_topic_keywords": ["관세", "투자", "100%"],
+        "event_type": "TRADE",
+        "is_factual": true,
+        "note": "is_factual 변별 핵심 기사. 정답 core = 미국의 관세 지렛대 추가투자 요구(보도된 사실). 모호성 있어 AMBIGUOUS_CORE 허용.",
+        "rejected_as_core": [
+          {
+            "topic_keywords": ["청와대", "논의", "대응 방안"],
+            "correct_is_factual": false,
+            "reason": "'대응 방안을 논의할 방침' = 계획 단계 → is_factual false. core 불가(consequence/예정)."
+          },
+          {
+            "topic_keywords": ["WEF", "다보스 참석", "참석할"],
+            "correct_is_factual": false,
+            "reason": "'참석할 예정'·'참석할 것으로 알려졌다' = 예정+미확인 보도 → is_factual false."
+          }
+        ]
+      }
+    },
+    "cpi_may_20260602": {
+      "title": "2026년 5월 소비자물가 전년동월비 3.1% 상승",
+      "core": {
+        "accepted_topic_keywords": ["소비자물가", "3.1", "물가"],
+        "event_type": "MACRO_INDICATOR",
+        "is_factual": true,
+        "note": "확정 경제지표 발표(P4). 유가·연휴는 상승 원인 background."
+      }
+    }
+  }
+}

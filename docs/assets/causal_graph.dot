@@ -1,0 +1,34 @@
+digraph causal {
+  rankdir=LR;
+  bgcolor="transparent";
+  node [shape=box, style="rounded,filled", fontname="AppleSDGothicNeo", fontsize=12, margin="0.12,0.08"];
+  edge [fontname="AppleSDGothicNeo", fontsize=10, color="#666666"];
+
+  // ── 배경(원인) ──
+  bg1 [label="중동 전쟁·고유가", fillcolor="#FDEBD0", color="#E67E22"];
+  bg2 [label="트럼프 통행료 구상", fillcolor="#FDEBD0", color="#E67E22"];
+
+  // ── 핵심 사건 (CORE) ──
+  coreA [label="美·이란 휴전·통행료 합의\n(CORE · 기사A · 4/7)", fillcolor="#D6EAF8", color="#2E86C1", penwidth=2];
+  coreB [label="범정부 교통TF 발족\n(CORE · 기사B · 4/7)", fillcolor="#D6EAF8", color="#2E86C1", penwidth=2];
+
+  // ── 공유 노드 (클러스터링으로 병합) ──
+  shared [label="고유가·에너지 비용↑\n(공유 노드 ★)", fillcolor="#FCF3CF", color="#B7950B", penwidth=2, shape=box];
+
+  // ── 결과 (consequence) ──
+  cons1 [label="대중교통 수요 전환\n(예측 conf 0.55)", fillcolor="#D5F5E3", color="#27AE60"];
+  cons2 [label="타 해협 유사제도 확산\n(예측 conf 0.45)", fillcolor="#D5F5E3", color="#27AE60"];
+
+  // ── 엣지 ──
+  bg1  -> coreA  [label="CAUSE"];
+  bg2  -> coreA  [label="PRIOR"];
+  coreA -> shared [label="결과(예측 0.7)", color="#2E86C1"];
+  shared -> coreB [label="CAUSE", color="#B7950B", penwidth=2];
+  coreA -> cons2 [label="SPILLOVER"];
+  coreB -> cons1 [label="결과(예측)"];
+
+  // 시간축 주석
+  { rank=source; bg1; bg2; }
+  label="◀ 과거(배경)  —  핵심사건  —  미래(결과) ▶     ★ = 기사 경계를 넘어 클러스터링이 연결한 노드";
+  labelloc="b"; fontname="AppleSDGothicNeo"; fontsize=11; fontcolor="#444444";
+}

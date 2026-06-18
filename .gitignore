@@ -8,9 +8,22 @@ __pycache__/
 *.pt
 *.parquet
 
-# News / event data dumps
-data/raw/
+# News / event data dumps — 내용은 추적 제외, 디렉터리 골격(.gitkeep)만 유지
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
 data/*.jsonl
+
+# 기획팀 설계 참고용 선행작업 원본 (저작권/용량). docs/spec/ 은 README만 추적.
+docs/spec/*
+!docs/spec/README.md
+
+# eval 백엔드 설정(자격증명 env 참조). 템플릿 models.example.json 만 추적.
+eval/models.json
+
+# copyright-by-design: 기사 본문은 추출용 임시 보관, 커밋 금지. 구조화 이벤트(predictions)만 추적.
+eval/articles/
 
 # IDE
 .idea/

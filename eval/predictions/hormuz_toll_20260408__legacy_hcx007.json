@@ -1,0 +1,22 @@
+{
+  "article_id": "hormuz_toll_20260408",
+  "title": "호르무즈 통행료 체계 / 美·이란 휴전",
+  "config_id": "legacy_hcx007",
+  "family": "legacy_single",
+  "model": "HCX-007",
+  "core_event": {
+    "who": "미국",
+    "what": "이란과 호르무즈 해협 통행료 부과에 합의",
+    "when": "2026년 4월",
+    "where": "호르무즈 해협",
+    "why": "통행 혼잡 해소 지원 및 재정 확보 목적",
+    "how": "휴전 협상 과정에서",
+    "event_type": "TRADE",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "미국과 이란이 호르무즈 해협 통행료 부과에 합의함으로써 국제 무역에 영향을 미칠 가능성이 크다."
+  },
+  "parse_status": "json_wrapped+inner",
+  "raw_core": " \"who\": \"미국\",\n    \"what\": \"이란과 호르무즈 해협 통행료 부과에 합의\",\n    \"when\": \"2026년 4월\",\n    \"where\": \"호르무즈 해협\",\n    \"why\": \"통행 혼잡 해소 지원 및 재정 확보 목적\",\n    \"how\": \"휴전 협상 과정에서\",\n    \"event_type\": \"TRADE\",\n    \"is_factual\": true,\n    \"is_ongoing\": false,\n    \"select_reason\": \"미국과 이란이 호르무즈 해협 통행료 부과에 합의함으로써 국제 무역에 영향을 미칠 가능성이 크다.\"",
+  "raw_block": " \"who\": \"미국\",\n    \"what\": \"이란과 호르무즈 해협 통행료 부과에 합의\",\n    \"when\": \"2026년 4월\",\n    \"where\": \"호르무즈 해협\",\n    \"why\": \"통행 혼잡 해소 지원 및 재정 확보 목적\",\n    \"how\": \"휴전 협상 과정에서\",\n    \"event_type\": \"TRADE\",\n    \"is_factual\": true,\n    \"is_ongoing\": false,\n    \"select_reason\": \"미국과 이란이 호르무즈 해협 통행료 부과에 합의함으로써 국제 무역에 영향을 미칠 가능성이 크다.\"\n \"who\": \"이란\",\n      \"what\": \"호르무즈 해협 안전한 항행 제공\",\n      \"when\": \"2주간\",\n      \"where\": \"호르무즈 해협\",\n      \"relation_to_core\": \"CAUSE\",\n      \"is_factual\": true\n{\n      \"who\": \"미국\",\n      \"what\": \"이란 대리세력에 대한 공격 중단 요구\",\n      \"when\": \"현재\",\n      \"where\": \"중동 지역\",\n      \"relation_to_core\": \"PRIOR_CONTEXT\",\n      \"is_factual\": true\n    }\n \"who\": \"한국 등 중동 에너지 수입국\",\n      \"what\": \"에너지 수입 부담 증가\",\n      \"where\": \"국제 시장\",\n      \"consequence_type\": \"ECONOMIC_IMPACT\",\n      \"time_horizon\": \"SHORT_TERM\",\n      \"is_stated_in_article\": true,\n      \"confidence\": 0.8\n\"who\": \"세계 주요 해협\",\n      \"what\": \"유사한 통행료 제도 도입 가능성\",\n      \"where\": \"글로벌 해상 운송 경로\",\n      \"consequence_type\": \"SPILLOVER\",\n      \"time_horizon\": \"LONG_TERM\",\n      \"is_stated_in_article\": true,\n      \"confidence\": 0.7\n \"organizations\": [],\n    \"countries\": [\"미국\", \"이란\", \"한국\"],\n    \"markets\": [\"호르무즈 해협\", \"국제 에너지 시장\"],\n    \"persons\": []\n\"extraction_quality\": {\n    \"core_event_completeness\": 0.9,\n    \"has_quantitative_data\": false,\n    \"extraction_confidence\": 0.85,\n    \"evidence_quality\": \"M\",\n    \"flags\": []"
+}

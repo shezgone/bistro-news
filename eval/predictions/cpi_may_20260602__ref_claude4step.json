@@ -1,0 +1,24 @@
+{
+  "article_id": "cpi_may_20260602",
+  "title": "2026년 5월 소비자물가 전년동월비 3.1% 상승",
+  "config_id": "ref_claude4step",
+  "family": "new_4step",
+  "model": "Claude (Opus 4.8, bootstrap)",
+  "is_reference": true,
+  "note": "⚠️ Opus 4.8 부트스트랩 reference(자가생성). Sonnet 미사용. 정책브리핑(공공) baseline — MACRO_INDICATOR.",
+  "core_event": {
+    "who": "국가데이터처",
+    "what": "2026년 5월 소비자물가 전년동월대비 3.1% 상승 발표 (전월 2.6%→3.1%, 0.5%p 확대)",
+    "when": "2026-06-02",
+    "where": "대한민국",
+    "why": null,
+    "how": "소비자물가동향 발표",
+    "event_type": "MACRO_INDICATOR",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "확정된 공식 경제지표 발표(수치·기간 명시)로 C1~C4 충족 (P4)."
+  },
+  "parse_status": "authored_opus",
+  "raw_core": "{\"who\":\"국가데이터처\",\"what\":\"5월 소비자물가 전년동월대비 3.1% 상승 발표\",\"event_type\":\"MACRO_INDICATOR\",\"is_factual\":true}",
+  "raw_block": "# STEP A (Core)\n{\n  \"candidates\": [\n    {\"what\":\"5월 소비자물가 전년동월대비 3.1% 상승 발표\",\"is_factual\":true,\"factual_basis\":\"국가데이터처 공식 통계 발표\"}\n  ],\n  \"core_event\": {\"who\":\"국가데이터처\",\"what\":\"2026년 5월 소비자물가 전년동월대비 3.1% 상승 발표(전월 2.6%→3.1%, 0.5%p 확대)\",\"when\":\"2026-06-02\",\"where\":\"대한민국\",\"why\":null,\"how\":\"소비자물가동향 발표\",\"event_type\":\"MACRO_INDICATOR\",\"is_factual\":true,\"is_ongoing\":false,\"select_reason\":\"확정 경제지표 발표, P4\"}\n}\n\n# STEP B (Background)\n{\n  \"background_events\": [\n    {\"who\":null,\"what\":\"중동전쟁 영향 국제유가 상승 → 석유류 가격 상승폭 확대\",\"when\":\"2026-05\",\"where\":\"국제 에너지 시장\",\"relation_to_core\":\"CAUSE\",\"is_factual\":true},\n    {\"who\":null,\"what\":\"5월 연휴 증가로 여행 관련 개인서비스 가격 상승\",\"when\":\"2026-05\",\"where\":\"대한민국\",\"relation_to_core\":\"CAUSE\",\"is_factual\":true}\n  ]\n}\n\n# STEP C (Consequence)\n{\n  \"consequence_events\": []\n}\n\n# STEP D (Merge + Critic)\n{\n  \"entities\": {\"organizations\":[\"국가데이터처\",\"통계청\"],\"countries\":[\"대한민국\"],\"markets\":[],\"persons\":[]},\n  \"extraction_quality\": {\"core_event_completeness\":0.8,\"has_quantitative_data\":true,\"extraction_confidence\":0.9,\"evidence_quality\":\"H\",\"critic_scores\":{\"temporal_direction\":3,\"field_completeness\":3,\"causal_logic\":3,\"total\":9,\"verdict\":\"pass\"},\"flags\":[]}\n}"
+}

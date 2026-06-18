@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bistro-news"
+version = "0.1.0"
+description = "뉴스 기반 인과관계 분석 — 거시경제 모델용 이벤트 추출·그래프·인덱스 파이프라인"
+requires-python = ">=3.10"
+# 핵심 런타임은 stdlib 만으로 동작(llm 클라이언트 = urllib). 단계별 의존성은 extras 로.
+dependencies = []
+
+[project.optional-dependencies]
+eval = ["openpyxl>=3.1"]                          # xlsx 인제스트
+embed = ["sentence-transformers>=2.7", "FlagEmbedding>=1.2"]  # BGE-M3 (ingest/cluster)
+graph = ["networkx>=3.2"]                          # 인과 그래프·centrality
+stats = ["statsmodels>=0.14", "tigramite>=5.2"]    # Granger / PCMCI (validate)
+all = ["openpyxl>=3.1", "sentence-transformers>=2.7", "networkx>=3.2",
+       "statsmodels>=0.14", "tigramite>=5.2", "numpy", "pandas"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# 설치(개발):  pip install -e ".[all]"
+# 설치 없이도 eval/*.py 는 sys.path 부트스트랩으로 src/ 를 잡아 실행됨.

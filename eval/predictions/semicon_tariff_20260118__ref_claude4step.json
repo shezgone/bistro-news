@@ -1,0 +1,24 @@
+{
+  "article_id": "semicon_tariff_20260118",
+  "title": "미국 100% 관세 압박 / 반도체 추가투자 요구",
+  "config_id": "ref_claude4step",
+  "family": "new_4step",
+  "model": "Claude (Opus 4.8, bootstrap)",
+  "is_reference": true,
+  "note": "⚠️ Opus 4.8 부트스트랩 reference(자가생성). Sonnet 미사용. is_factual 변별 테스트 핵심 기사: 청와대 '논의할 방침'·WEF '알려졌다'·러트닉 '해석된다'·'업계 한 관계자' 익명 → core 제외.",
+  "core_event": {
+    "who": "미국 트럼프 행정부",
+    "what": "반도체 '100% 관세'를 지렛대로 한국 기업에 미국 내 추가 투자 요구",
+    "when": "2026-01",
+    "where": "미국",
+    "why": "미국 내 반도체 생산능력 확대",
+    "how": "100% 관세 위협을 통한 투자 압박",
+    "event_type": "TRADE",
+    "is_factual": true,
+    "is_ongoing": true,
+    "select_reason": "기사 작성의 직접 원인인 미국의 관세 지렛대 추가투자 요구(보도된 사실). 청와대 '논의할 방침'·WEF 참석 '알려졌다'는 계획/미확인이라 core 제외."
+  },
+  "parse_status": "authored_opus",
+  "raw_core": "{\"who\":\"미국 트럼프 행정부\",\"what\":\"반도체 100% 관세 지렛대 추가투자 요구\",\"event_type\":\"TRADE\",\"is_factual\":true,\"is_ongoing\":true}",
+  "raw_block": "# STEP A (Core)\n{\n  \"candidates\": [\n    {\"what\":\"트럼프 행정부, 100% 관세 무기로 한국 반도체 기업에 추가 투자 요구\",\"is_factual\":true,\"factual_basis\":\"'요구하면서' 보도된 진행 중 사실\"},\n    {\"what\":\"청와대, 김용범 정책실장 주도로 반도체 관세 대응 방안 논의\",\"is_factual\":false,\"factual_basis\":\"'논의할 방침' = 계획 단계\"},\n    {\"what\":\"여한구 본부장·트럼프·그리어 WEF 다보스 참석\",\"is_factual\":false,\"factual_basis\":\"'참석할 예정'·'참석할 것으로 알려졌다' = 예정/미확인\"},\n    {\"what\":\"러트닉 상무장관, 마이크론 착공식서 대만 투자조건부 관세혜택 무역협정 결과 언급\",\"is_factual\":true,\"factual_basis\":\"실명 장관 완료 발언(1/16); 단 '추가 투자 압박으로 해석된다'는 기자 해석\"}\n  ],\n  \"core_event\": {\"who\":\"미국 트럼프 행정부\",\"what\":\"반도체 '100% 관세' 지렛대 한국 기업 추가 투자 요구\",\"when\":\"2026-01\",\"where\":\"미국\",\"why\":\"미국 내 반도체 생산능력 확대\",\"how\":\"100% 관세 위협\",\"event_type\":\"TRADE\",\"is_factual\":true,\"is_ongoing\":true,\"select_reason\":\"기사 직접 원인; 청와대 논의·WEF는 계획/미확인이라 제외\"}\n}\n\n# STEP B (Background)\n{\n  \"background_events\": [\n    {\"who\":\"하워드 러트닉 미 상무장관\",\"what\":\"마이크론 착공식서 대만 투자조건부 관세혜택 무역협정 결과 언급\",\"when\":\"2026-01-16\",\"where\":\"미국\",\"relation_to_core\":\"PRIOR_CONTEXT\",\"is_factual\":true},\n    {\"who\":\"삼성전자\",\"what\":\"미국 텍사스 테일러 370억달러 파운드리 공장 완공 임박\",\"when\":\"진행 중\",\"where\":\"미국 텍사스\",\"relation_to_core\":\"PRIOR_CONTEXT\",\"is_factual\":true},\n    {\"who\":\"SK하이닉스\",\"what\":\"미국 인디애나 38억7000만달러 첨단 패키징 공장 건설\",\"when\":\"진행 중\",\"where\":\"미국 인디애나\",\"relation_to_core\":\"PRIOR_CONTEXT\",\"is_factual\":true}\n  ]\n}\n\n# STEP C (Consequence)\n{\n  \"consequence_events\": [\n    {\"who\":\"한국 반도체 기업(삼성전자·SK하이닉스)\",\"what\":\"기존 투자 외 미국 내 추가 투자 요구 가능성 확대\",\"where\":\"미국\",\"consequence_type\":\"ECONOMIC_IMPACT\",\"time_horizon\":\"MEDIUM_TERM\",\"is_stated_in_article\":true,\"confidence\":0.6},\n    {\"who\":\"청와대\",\"what\":\"김용범 정책실장 주도 반도체 관세 대응 방안 논의\",\"where\":\"대한민국\",\"consequence_type\":\"POLICY_RESPONSE\",\"time_horizon\":\"SHORT_TERM\",\"is_stated_in_article\":true,\"confidence\":0.7},\n    {\"who\":\"한·미 통상 당국\",\"what\":\"다보스 WEF 계기 접촉 가능성\",\"where\":\"스위스 다보스\",\"consequence_type\":\"POLICY_RESPONSE\",\"time_horizon\":\"IMMEDIATE\",\"is_stated_in_article\":true,\"confidence\":0.5}\n  ]\n}\n\n# STEP D (Merge + Critic)\n{\n  \"entities\": {\"organizations\":[\"삼성전자\",\"SK하이닉스\",\"마이크론\",\"USTR\",\"한국무역협회\",\"청와대\",\"산업통상부\"],\"countries\":[\"미국\",\"한국\",\"대만\"],\"markets\":[\"반도체\",\"메모리반도체\"],\"persons\":[\"도널드 트럼프\",\"하워드 러트닉\",\"여한구\",\"김용범\",\"제이미슨 그리어\",\"장상식\"]},\n  \"extraction_quality\": {\"core_event_completeness\":0.7,\"has_quantitative_data\":true,\"extraction_confidence\":0.7,\"evidence_quality\":\"M\",\"critic_scores\":{\"temporal_direction\":2,\"field_completeness\":3,\"causal_logic\":3,\"total\":8,\"verdict\":\"pass\"},\"flags\":[\"AMBIGUOUS_CORE\",\"ONGOING_SITUATION\"]}\n}"
+}

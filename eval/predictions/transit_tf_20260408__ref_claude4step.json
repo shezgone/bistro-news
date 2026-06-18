@@ -1,0 +1,24 @@
+{
+  "article_id": "transit_tf_20260408",
+  "title": "출퇴근 혼잡완화 범정부 TF 발족",
+  "config_id": "ref_claude4step",
+  "family": "new_4step",
+  "model": "Claude (Opus 4.8, bootstrap)",
+  "is_reference": true,
+  "note": "⚠️ 부트스트랩 reference. reference 모델 = Claude Opus (Sonnet 미사용 확정). 이 세션의 Opus 4.8 이 4-step 프롬프트를 수동 적용해 생성 → 평가자 자가생성이라 silver/스모크용. 정식화 시 '독립' API Opus 호출(자가생성 아님)로 교체 권장.",
+  "core_event": {
+    "who": "국토교통부 대도시권광역교통위원회",
+    "what": "대중교통 활성화·출퇴근 혼잡완화 범정부 TF 발족",
+    "when": "2026-04-07",
+    "where": "대한민국",
+    "why": "중동 전쟁발 고유가 위기 극복 및 출퇴근 혼잡 해소",
+    "how": "재정경제부·행정안전부 등 관계부처 참여",
+    "event_type": "REGULATION",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "실명 정부기관의 완료된 공식 발족으로 C1~C4 충족. 이달 말 대책 발표·인센티브 검토는 계획/검토 단계라 is_factual:false → core 제외."
+  },
+  "parse_status": "authored_opus",
+  "raw_core": "{\"who\":\"국토교통부 대도시권광역교통위원회\",\"what\":\"대중교통 활성화·출퇴근 혼잡완화 범정부 TF 발족\",\"event_type\":\"REGULATION\",\"is_factual\":true}",
+  "raw_block": "# STEP A (Core)\n{\n  \"candidates\": [\n    {\"what\":\"국토부 대광위 범정부 TF 발족\",\"is_factual\":true,\"factual_basis\":\"'발족했다고 8일 밝혔다' 실명 기관 완료 공식 행위\"},\n    {\"what\":\"이달 말 출퇴근 혼잡완화 대책 발표\",\"is_factual\":false,\"factual_basis\":\"'발표한다는 계획' — 계획 단계\"},\n    {\"what\":\"출퇴근 시간 외 대중교통 인센티브 부여\",\"is_factual\":false,\"factual_basis\":\"'신속히 검토 중' — 검토 단계\"}\n  ],\n  \"core_event\": {\"who\":\"국토교통부 대도시권광역교통위원회\",\"what\":\"대중교통 활성화·출퇴근 혼잡완화 범정부 TF 발족\",\"when\":\"2026-04-07\",\"where\":\"대한민국\",\"why\":\"중동 전쟁발 고유가 위기 극복 및 출퇴근 혼잡 해소\",\"how\":\"재정경제부·행정안전부 등 관계부처 참여\",\"event_type\":\"REGULATION\",\"is_factual\":true,\"is_ongoing\":false,\"select_reason\":\"실명 정부기관 완료 공식 발족, C1~C4 충족\"}\n}\n\n# STEP B (Background)\n{\n  \"background_events\": [\n    {\"who\":null,\"what\":\"중동 전쟁발 고유가 위기 발생\",\"when\":\"2026-04 진행 중\",\"where\":\"국제 에너지 시장\",\"relation_to_core\":\"CAUSE\",\"is_factual\":true},\n    {\"who\":\"청와대\",\"what\":\"혼잡 시간대 회피 대중교통 이용 인센티브 추가 제공 방침 발표\",\"when\":\"2026-04-03\",\"where\":\"대한민국\",\"relation_to_core\":\"PRIOR_CONTEXT\",\"is_factual\":true}\n  ]\n}\n\n# STEP C (Consequence)\n{\n  \"consequence_events\": [\n    {\"who\":\"국민·통근자\",\"what\":\"승용차 쏠림 완화 및 대중교통 수요 이동\",\"where\":\"대한민국\",\"consequence_type\":\"POLICY_RESPONSE\",\"time_horizon\":\"SHORT_TERM\",\"is_stated_in_article\":true,\"confidence\":0.6},\n    {\"who\":\"국토교통부 대광위\",\"what\":\"이달 말 출퇴근 혼잡완화 대책 발표\",\"where\":\"대한민국\",\"consequence_type\":\"POLICY_RESPONSE\",\"time_horizon\":\"IMMEDIATE\",\"is_stated_in_article\":true,\"confidence\":0.7}\n  ]\n}\n\n# STEP D (Merge + Critic)\n{\n  \"extraction_quality\": {\"core_event_completeness\":0.95,\"has_quantitative_data\":false,\"extraction_confidence\":0.9,\"evidence_quality\":\"H\",\"critic_scores\":{\"temporal_direction\":3,\"field_completeness\":3,\"causal_logic\":3,\"total\":9,\"verdict\":\"pass\"},\"flags\":[]}\n}"
+}

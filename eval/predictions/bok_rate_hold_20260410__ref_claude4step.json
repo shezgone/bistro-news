@@ -1,0 +1,24 @@
+{
+  "article_id": "bok_rate_hold_20260410",
+  "title": "한은 4월 기준금리 연 2.50% 동결",
+  "config_id": "ref_claude4step",
+  "family": "new_4step",
+  "model": "Claude (Opus 4.8, bootstrap)",
+  "is_reference": true,
+  "note": "⚠️ Opus 4.8 부트스트랩 reference(자가생성). Sonnet 미사용. 정식화 시 독립 API Opus 호출로 교체.",
+  "core_event": {
+    "who": "한국은행 금융통화위원회",
+    "what": "기준금리 연 2.50% 동결 (7회 연속)",
+    "when": "2026-04-10",
+    "where": "대한민국",
+    "why": null,
+    "how": "2026년 4월 통화정책방향 회의",
+    "event_type": "MONETARY_POLICY",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "실명 기관(금통위)의 완료된 공식 정책 결정으로 C1~C4 충족; 수치·날짜·결정내용 모두 명시."
+  },
+  "parse_status": "authored_opus",
+  "raw_core": "{\"who\":\"한국은행 금융통화위원회\",\"what\":\"기준금리 연 2.50% 동결(7회 연속)\",\"event_type\":\"MONETARY_POLICY\",\"is_factual\":true}",
+  "raw_block": "# STEP A (Core)\n{\n  \"candidates\": [\n    {\"what\":\"금통위 4월 기준금리 연 2.50% 동결\",\"is_factual\":true,\"factual_basis\":\"한국은행 금통위 공식 결정, '동결했다' 완료\"}\n  ],\n  \"core_event\": {\"who\":\"한국은행 금융통화위원회\",\"what\":\"기준금리 연 2.50% 동결(7회 연속)\",\"when\":\"2026-04-10\",\"where\":\"대한민국\",\"why\":null,\"how\":\"2026년 4월 통화정책방향 회의\",\"event_type\":\"MONETARY_POLICY\",\"is_factual\":true,\"is_ongoing\":false,\"select_reason\":\"실명 기관 완료 공식 결정, C1~C4 충족\"}\n}\n\n# STEP B (Background)\n{\n  \"background_events\": []\n}\n\n# STEP C (Consequence)\n{\n  \"consequence_events\": []\n}\n\n# STEP D (Merge + Critic)\n{\n  \"core_event\": {\"who\":\"한국은행 금융통화위원회\",\"what\":\"기준금리 연 2.50% 동결(7회 연속)\",\"event_type\":\"MONETARY_POLICY\",\"is_factual\":true,\"is_ongoing\":false},\n  \"background_events\": [],\n  \"consequence_events\": [],\n  \"entities\": {\"organizations\":[\"한국은행\",\"금융통화위원회\"],\"countries\":[\"대한민국\"],\"markets\":[],\"persons\":[]},\n  \"extraction_quality\": {\"core_event_completeness\":0.8,\"has_quantitative_data\":true,\"extraction_confidence\":0.9,\"evidence_quality\":\"H\",\"critic_scores\":{\"temporal_direction\":3,\"field_completeness\":3,\"causal_logic\":2,\"total\":8,\"verdict\":\"pass\"},\"flags\":[\"LOW_DETAIL\"]}\n}"
+}

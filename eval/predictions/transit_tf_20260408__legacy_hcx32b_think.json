@@ -1,0 +1,22 @@
+{
+  "article_id": "transit_tf_20260408",
+  "title": "출퇴근 혼잡완화 범정부 TF 발족",
+  "config_id": "legacy_hcx32b_think",
+  "family": "legacy_single",
+  "model": "HCX-32B(Think)",
+  "core_event": {
+    "who": "국토교통부 대도시권광역교통위원회(대광위)",
+    "what": "대중교통 활성화 및 출퇴근 혼잡 완화를 위한 범정부 TF 발족",
+    "when": "2026년 4월 7일",
+    "where": "대한민국",
+    "why": " Now formulate the answer. 중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 시간 대중교통 혼잡 해소",
+    "how": "공공부문 출퇴근 유연화, 출퇴근 시간 외 대중교통 인센티브 부여 등 실행방안 검토",
+    "event_type": "REGULATION",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "기사의 핵심 정책 결정으로, 구체적 행위자와 일정이 명시됨"
+  },
+  "parse_status": "json+core_event",
+  "raw_core": "{ \"core_event\": { \"who\": \"국토교통부 대도시권광역교통위원회(대광위)\", \"what\": \"대중교통 활성화 및 출퇴근 혼잡 완화를 위한 범정부 TF 발족\", \"when\": \"2026년 4월 7일\", \"where\": \"대한민국\", \"why\": \" Now formulate the answer.\n\n중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 시간 대중교통 혼잡 해소\", \"how\": \"공공부문 출퇴근 유연화, 출퇴근 시간 외 대중교통 인센티브 부여 등 실행방안 검토\", \"event_type\": \"REGULATION\", \"is_factual\": true, \"is_ongoing\": false, \"select_reason\": \"기사의 핵심 정책 결정으로, 구체적 행위자와 일정이 명시됨\" }, \"background_events\": [ { \"who\": \"중동 전쟁\", \"what\": \"고유가 위기 발생\", \"when\": \"2026년 4월 기준 진행 중\", \"where\": \"국제 에너지 시장\", \"relation_to_core\": \"CAUSE\", \"is_factual\": true } ], \"consequence_events\": [ { \"who\": \"국민\", \"what\": \"출퇴근 혼잡 완화 및 대중교통 이용 유도\", \"where\": \"대한민국\", \"consequence_type\": \"POLICY_RESPONSE\", \"time_horizon\": \"SHORT_TERM\", \"is_stated_in_article\": true, \"confidence\": 0.7 } ], \"entities\": { \"organizations\": [\"국토교통부\", \"대광위\", \"청와대\"], \"countries\": [\"대한민국\"], \"markets\": [], \"persons\": [\"김윤덕 국토부 장관\"] }, \"extraction_quality\": { \"core_event_completeness\": 0.9, \"has_quantitative_data\": false, \"extraction_confidence\": 0.9, \"evidence_quality\": \"H\", \"flags\": [] } }",
+  "raw_block": "{ \"core_event\": { \"who\": \"국토교통부 대도시권광역교통위원회(대광위)\", \"what\": \"대중교통 활성화 및 출퇴근 혼잡 완화를 위한 범정부 TF 발족\", \"when\": \"2026년 4월 7일\", \"where\": \"대한민국\", \"why\": \" Now formulate the answer.\n\n중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 시간 대중교통 혼잡 해소\", \"how\": \"공공부문 출퇴근 유연화, 출퇴근 시간 외 대중교통 인센티브 부여 등 실행방안 검토\", \"event_type\": \"REGULATION\", \"is_factual\": true, \"is_ongoing\": false, \"select_reason\": \"기사의 핵심 정책 결정으로, 구체적 행위자와 일정이 명시됨\" }, \"background_events\": [ { \"who\": \"중동 전쟁\", \"what\": \"고유가 위기 발생\", \"when\": \"2026년 4월 기준 진행 중\", \"where\": \"국제 에너지 시장\", \"relation_to_core\": \"CAUSE\", \"is_factual\": true } ], \"consequence_events\": [ { \"who\": \"국민\", \"what\": \"출퇴근 혼잡 완화 및 대중교통 이용 유도\", \"where\": \"대한민국\", \"consequence_type\": \"POLICY_RESPONSE\", \"time_horizon\": \"SHORT_TERM\", \"is_stated_in_article\": true, \"confidence\": 0.7 } ], \"entities\": { \"organizations\": [\"국토교통부\", \"대광위\", \"청와대\"], \"countries\": [\"대한민국\"], \"markets\": [], \"persons\": [\"김윤덕 국토부 장관\"] }, \"extraction_quality\": { \"core_event_completeness\": 0.9, \"has_quantitative_data\": false, \"extraction_confidence\": 0.9, \"evidence_quality\": \"H\", \"flags\": [] } }"
+}

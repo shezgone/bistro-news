@@ -1,0 +1,27 @@
+{
+  "_about": "백엔드 설정 템플릿. `eval/models.json` 으로 복사해 채운 뒤 사용(models.json 은 gitignore). 키는 env 변수명으로만 참조 — 시크릿을 이 파일에 직접 쓰지 말 것.",
+  "_plan": "going-forward 비교 = Claude Opus(4-step, reference) vs 신규 4-step HCX-32B. Sonnet 미사용 확정. 과거 legacy/HCX-007/Think 설정은 정리됨(필요 시 git 이력 참조).",
+  "configs": {
+    "ref_claude4step": {
+      "family": "new_4step",
+      "model_label": "Claude Opus",
+      "step_a_candidate": "후보2",
+      "backend": "anthropic",
+      "model": "claude-opus-4-8",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "base_url_env": "ANTHROPIC_BASE_URL",
+      "max_tokens": 2000
+    },
+    "new4step_hcx32b": {
+      "family": "new_4step",
+      "model_label": "HCX-32B",
+      "step_a_candidate": "후보2",
+      "backend": "openai_compat",
+      "model": "HCX-32B",
+      "api_key_env": "HCX_API_KEY",
+      "base_url_env": "HCX_BASE_URL",
+      "max_tokens": 2000,
+      "temperature": 0.3
+    }
+  }
+}

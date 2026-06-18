@@ -37,6 +37,18 @@
 
 5. **인덱스화 → 시계열 연계** — 수백 개 이벤트를 일별 인덱스(숫자)로 압축:
    - **Track B (메인)**: 그래프 **eigenvector centrality** 일별 계산 → 전날 대비 변화량(Δcentrality) 집계를 인덱스로. "연쇄 파급력이 큰 이벤트"가 높은 값. 방법론 출처 = Tilly & Livan, *Macroeconomic forecasting with statistically validated knowledge graphs*, arXiv:2104.10457 (2021-04-21; Expert Systems with Applications 게재). 뉴스 narrative로 theme 지식그래프 구성 → 통계적 유의 edge "backbone" 필터링 → 노드 eigenvector centrality 변화로 3개 대형 경제권 산업생산 예측력 개선. **검증 완료**.
+
+     **⚠️ centrality 방향 결정 (구현 필수 — 놓치면 정반대 신호 학습):**
+     - 우리 엣지는 **원인 → 결과** 방향. **정방향** PageRank/eigenvector는 화살표가 모여드는 **결과·종착점**(예: 수입물가상승, in-degree 큰 노드)을 높게 줌 = "영향 많이 받는 취약점".
+     - 그러나 목표는 **"파급력 큰 원인 이벤트"**(out-edge 많은 상류 노드, 예: 연준 금리결정). 이건 정방향에선 낮게 나옴.
+     - **→ 그래프를 뒤집어(reverse) centrality 계산**해야 파급원이 높은 점수. 또는 HITS **hub** score 사용. (authority/정방향 = 취약점용.)
+     - 방향그래프라 순수 `eigenvector_centrality`는 수렴 불안정 → 실무는 **PageRank**(또는 Katz) 사용. Tilly 원논문은 무방향 co-occurrence라 이 이슈 없었음 — 인과(방향) 그래프인 본 프로젝트만의 결정사항.
+     - 집계: `event_type`별 노드 centrality **합산** → 카테고리별 일별 지수 → 차분(Δ). 정규화 중심성(PageRank)은 **상대 점유율**이라 타 카테고리 이벤트량에 희석됨에 유의.
+     ```python
+     c = nx.pagerank(G_t.reverse(), weight="weight")          # 역방향 = 파급원
+     monetary = sum(v for n,v in c.items() if etype[n]=="MONETARY")
+     feature  = monetary - monetary_prev                       # Δ → 학습 feature
+     ```
    - **Track A (baseline)**: 이벤트 클러스터별 일별 기사 수 × 미디어 중요도 가중합. 구현이 쉬워 Track B 검증용 베이스라인.
 
 6. **역방향 검증 루프** — 소규모 실행 → 예측 오차로 스펙 확정: ① 기존 시계열 모델(ARIMA/LSTM)에 Track A/B 인덱스 추가 투입해 오차(MSE/MAE) 비교 → ② **Granger 인과 검정**(인덱스가 경제지표보다 선행하는지) → ③ **lead-lag 구조** 파악(예: 공급망 이벤트는 T+2주 후 물가 반영) → ④ 결과를 거슬러 그래프 edge 가중치·클러스터링 기준까지 재조정.

@@ -1,0 +1,22 @@
+{
+  "article_id": "transit_tf_20260408",
+  "title": "출퇴근 혼잡완화 범정부 TF 발족",
+  "config_id": "legacy_claude_sonnet46",
+  "family": "legacy_single",
+  "model": "Claude Sonnet 4.6",
+  "core_event": {
+    "who": "국토교통부 대도시권광역교통위원회",
+    "what": "대중교통 활성화 및 혼잡 완화 범정부 TF 발족",
+    "when": "2026년 04월 07일",
+    "where": "대한민국",
+    "why": "중동 전쟁발 고유가 위기 극복 및 출퇴근 혼잡 해소",
+    "how": "공공부문 출퇴근 유연화 및 대중교통 인센티브 실행방안 검토",
+    "event_type": "OTHER",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "기사 작성의 직접적 원인이며 정부 기관이 공식적으로 실행 완료한 구체적 행위임"
+  },
+  "parse_status": "table",
+  "raw_core": "who\nwhat\nwhen\nwhere\nwhy\nhow\nevent_type\nis_factual\nis_ongoing\nselect_reason\n국토교통부 대도시권광역교통위원회\n대중교통 활성화 및 혼잡 완화 범정부 TF 발족\n2026년 04월 07일\n대한민국\n중동 전쟁발 고유가 위기 극복 및 출퇴근 혼잡 해소\n공공부문 출퇴근 유연화 및 대중교통 인센티브 실행방안 검토\nOTHER\nTRUE\nFALSE\n기사 작성의 직접적 원인이며 정부 기관이 공식적으로 실행 완료한 구체적 행위임",
+  "raw_block": "who\nwhat\nwhen\nwhere\nwhy\nhow\nevent_type\nis_factual\nis_ongoing\nselect_reason\n국토교통부 대도시권광역교통위원회\n대중교통 활성화 및 혼잡 완화 범정부 TF 발족\n2026년 04월 07일\n대한민국\n중동 전쟁발 고유가 위기 극복 및 출퇴근 혼잡 해소\n공공부문 출퇴근 유연화 및 대중교통 인센티브 실행방안 검토\nOTHER\nTRUE\nFALSE\n기사 작성의 직접적 원인이며 정부 기관이 공식적으로 실행 완료한 구체적 행위임"
+}

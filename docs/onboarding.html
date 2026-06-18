@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Apple SD Gothic Neo", "AppleSDGothicNeo", "Apple Gothic", sans-serif;
+    color: #222; line-height: 1.55; font-size: 11pt; margin: 0;
+  }
+  h1 { font-size: 22pt; color: #1A5276; margin: 0 0 4px; }
+  h2 { font-size: 15pt; color: #1A5276; border-bottom: 2px solid #AED6F1;
+       padding-bottom: 3px; margin: 26px 0 10px; }
+  h3 { font-size: 12.5pt; color: #2471A3; margin: 16px 0 6px; }
+  .sub { color: #666; font-size: 10.5pt; margin: 0 0 6px; }
+  p { margin: 6px 0; }
+  code { background: #F4F6F7; padding: 1px 5px; border-radius: 3px;
+         font-family: "SF Mono", Menlo, monospace; font-size: 9.5pt; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10pt; }
+  th, td { border: 1px solid #D5D8DC; padding: 5px 8px; text-align: left; vertical-align: top; }
+  th { background: #EBF5FB; color: #1A5276; }
+  .box { border-radius: 6px; padding: 10px 14px; margin: 12px 0; font-size: 10.5pt; }
+  .warn { background: #FDF2E9; border-left: 4px solid #E67E22; }
+  .insight { background: #EAFAF1; border-left: 4px solid #27AE60; }
+  .note { background: #EBF5FB; border-left: 4px solid #2E86C1; }
+  .graph { text-align: center; margin: 14px 0; }
+  .graph img { width: 100%; max-width: 720px; }
+  .cap { color: #666; font-size: 9.5pt; margin-top: 4px; }
+  pre.flow { background: #F8F9F9; border: 1px solid #E5E8E8; border-radius: 6px;
+       padding: 10px 12px; font-family: "SF Mono", Menlo, monospace; font-size: 9pt;
+       line-height: 1.4; overflow-x: auto; white-space: pre; }
+  ul, ol { margin: 6px 0; padding-left: 22px; }
+  li { margin: 3px 0; }
+  .pagebreak { page-break-before: always; }
+  .tag { display:inline-block; background:#1A5276; color:#fff; font-size:8.5pt;
+         padding:1px 7px; border-radius:10px; vertical-align:middle; }
+</style>
+</head>
+<body>
+
+<h1>BISTRO-News 온보딩</h1>
+<p class="sub">뉴스 기반 인과관계 분석 — 거시경제 모델용 · 2026-06-17 · 기획팀·개발팀 공동</p>
+
+<div class="note box">
+<b>한 줄 목적.</b> 뉴스 기사에서 경제 사건을 뽑아 <b>"무엇이 무엇을 일으켰나"</b>를 그래프로 엮고,
+이를 숫자(지수)로 압축해 거시경제 예측 모델의 입력 신호로 쓴다.
+</div>
+
+<h2>1. 파이프라인 한눈에</h2>
+<pre class="flow">뉴스 수집 → 중복제거 → 이벤트 추출(LLM) → 클러스터링 → 인과 그래프 → 지수화 → 거시모델
+ (BIGKinds)  (SHA256+    (Step A/B/C/D)               (3단계 필터)  (Track A/B)  (Granger 검증)
+             BGE-M3)</pre>
+
+<table>
+<tr><th>단계</th><th>하는 일</th></tr>
+<tr><td>1. 수집·중복제거</td><td>기사 수집 → SHA256(동일) + BGE-M3 임베딩(유사) 클러스터링, <code>cluster_uuid</code> 관리</td></tr>
+<tr><td>2. 이벤트 추출</td><td>LLM 4-step: <b>A</b> Core → <b>B</b> Background → <b>C</b> Consequence → <b>D</b> Quality Critic</td></tr>
+<tr><td>3. 클러스터링</td><td>추출된 이벤트를 임베딩 유사도로 동일 계열끼리 묶음 (기사 경계 너머 연결)</td></tr>
+<tr><td>4. 인과 그래프</td><td>시간방향 강제 → 가중치(선행성×유사도×보도빈도) → LLM+PCMCI 이중검증</td></tr>
+<tr><td>5. 지수화</td><td>Track A(보도강도) / Track B(eigenvector centrality 변화량) → 일별 지수</td></tr>
+<tr><td>6. 검증 루프</td><td>Granger 인과검정 + lead-lag 구조 → 역방향으로 스펙 재조정</td></tr>
+</table>
+<p class="sub">근거 논문: Tilly &amp; Livan (UCL), 2021, <i>Macroeconomic forecasting with statistically validated knowledge graphs</i>, arXiv:2104.10457.</p>
+
+<h2>2. 전체 흐름 예시 (실제 테스트 기사)</h2>
+<p><b>입력 기사 3건:</b> ① 호르무즈 통행료(한국경제) ② 같은 호르무즈 보도(타 언론사) ③ 범정부 교통TF 발족(연합뉴스)</p>
+
+<table>
+<tr><th>단계</th><th>이 예시에서 일어나는 일</th></tr>
+<tr><td>① 중복제거</td><td>SHA256은 ①②를 못 거름(문구 다름) → BGE-M3 유사도 0.93으로 같은 <code>cluster_uuid</code>. 대표 1건만 추출(비용↓) + "2개사 보도" 기록</td></tr>
+<tr><td>② 추출</td><td>기사마다 <b>작은 미니그래프</b>(배경→Core→결과) 생성. 아직 <b>서로 끊김</b></td></tr>
+<tr><td>③ 클러스터링 ★</td><td>기사①의 결과 "고유가" ↔ 기사③의 배경 "중동발 고유가" → <b>같은 노드로 연결</b></td></tr>
+<tr><td>④ 그래프</td><td>끊긴 미니그래프들이 ③으로 이어져 아래 인과 사슬 완성</td></tr>
+<tr><td>⑤ 지수화</td><td>"고유가" 노드가 여러 사슬의 허브 → centrality 높음 → 그날 지수에 크게 기여</td></tr>
+<tr><td>⑥ 검증</td><td>이 지수가 실제 ECOS 에너지·물가 통계에 선행하는지 Granger 검정</td></tr>
+</table>
+
+<div class="graph">
+<img src="assets/causal_graph.svg" alt="causal graph">
+<div class="cap">그림 1. 두 기사가 공유 노드(★)를 통해 하나의 인과 사슬로 연결된 모습 (Graphviz 렌더링)</div>
+</div>
+
+<h2>3. 클러스터링을 왜 하나? (사실 2번 한다)</h2>
+<table>
+<tr><th>단계</th><th>무엇을 묶나</th><th>왜</th></tr>
+<tr><td>① 기사 중복제거</td><td>같은 사건 <b>기사들</b></td><td>중복 기사를 1건으로 → 추출 비용 절감 + 보도 강도 정확 측정</td></tr>
+<tr><td>③ 이벤트 클러스터링</td><td>다른 기사의 <b>같은 이벤트</b></td><td>아래 3가지 (핵심)</td></tr>
+</table>
+<div class="insight box">
+<b>③ 이벤트 클러스터링이 없으면 무너지는 것</b>
+<ol>
+<li><b>그래프가 조각남</b> — 같은 "고유가"가 기사마다 다른 노드가 돼 미니그래프가 영영 안 이어짐. 클러스터링이 기사 경계를 꿰매 <b>하나의 인과 네트워크</b>로 만듦.</li>
+<li><b>중요도(보도빈도) 측정 불가</b> — "30개 기사가 보도 = 중요" 신호는 30건을 같은 노드로 묶어야 셀 수 있음 → 가중치·Track A의 재료.</li>
+<li><b>예측→실현 추적 불가</b> — 한 기사의 <i>예측된</i> 결과가 다른 기사의 <i>실제</i> 사건과 같은 것임을 알아야 "예측이 맞았나"를 검증(PCMCI).</li>
+</ol>
+<b>요약:</b> 추출은 기사별 조각난 미니그래프만 만든다. <b>클러스터링이 그 조각을 이어붙여 "중요도 가중치 + 기사 경계 넘는 인과 사슬"을 가진 하나의 그래프로 만든다.</b>
+</div>
+
+<div class="pagebreak"></div>
+<h2>4. 이거 경제 온톨로지 아닌가? <span class="tag">개념 정리</span></h2>
+<p>맞다 — 다만 정확히는 <b>"얇은 온톨로지 층을 가진 이벤트 지식그래프(event knowledge graph)"</b>다. 이 구분이 설계에 중요하다.</p>
+<table>
+<tr><th>층</th><th>온톨로지?</th><th>이 프로젝트에서</th></tr>
+<tr><td>클래스/타입</td><td>✅</td><td><code>event_type</code> enum, entities(organizations/persons…) = 분류체계</td></tr>
+<tr><td>관계 타입</td><td>✅</td><td><code>relation_to_core</code>(CAUSE…), <code>consequence_type</code> = object property</td></tr>
+<tr><td>스키마</td><td>✅</td><td><code>event_schema.json</code> = 경량 온톨로지(클래스+속성 정의)</td></tr>
+<tr><td><b>인과 엣지(사실)</b></td><td><b>❌</b></td><td>"4/7 이 휴전이 → 이 고유가를" = <b>인스턴스 레벨 · 시점 있음 · 확률적(weight·PCMCI)</b></td></tr>
+</table>
+<p><b>핵심 차이.</b> 전통 온톨로지(OWL/RDF)는 <b>타입 레벨·시간 무관·논리적으로 확실한</b> 관계를 다룬다. 이 프로젝트의 인과 엣지는 <b>토큰 레벨·시점 있음·통계적으로 검증되는</b> 주장이다. → <b>스키마 층은 온톨로지, 인과 층은 경험적 그래프.</b></p>
+<div class="warn box">
+<b>⚠️ 함정.</b> 이걸 "경제 온톨로지"로 통째로 보고 인과 층까지 OWL/추론기로 형식화하면 안 된다. 거시 인과는 확률적·시변(time-varying)이라 형식 온톨로지가 가장 못 다루는 영역. PCMCI·LLM critic 같은 경험적 검증이 맞다.
+</div>
+<h3>온톨로지 프레이밍이 실제로 이득인 지점</h3>
+<ul>
+<li><b>엔티티 층 — 기존 표준 재사용 + 엔티티 링킹.</b> organizations·persons·countries를 <b>Wikidata</b> QID로 링킹하면(예: 美 연준 = Q53536) 기사마다 "Fed/연준/연방준비제도"가 다른 노드가 되는 걸 막아 centrality 시계열이 안정되고 <b>클러스터링 부담도 줄어든다.</b> 금융 분류는 <b>FIBO</b>, 이벤트 코딩은 <b>CAMEO</b>(GDELT) 검토.</li>
+<li><b>저장.</b> 형식추론이 필요 없으니 RDF 트리플스토어보다 <b>property graph(Neo4j)</b>가 가중·시점 엣지에 더 맞다.</li>
+</ul>
+
+<h2>5. 데이터 수집 &amp; 저작권 <span class="tag">중요</span></h2>
+<p>한국 기사는 대부분 <b>저작권 보호 대상</b>(단순 사실전달만 예외). 임의 크롤링 대신 <b>라이선스된 소스</b>를 쓴다.</p>
+<table>
+<tr><th>경로</th><th>본문</th><th>비용</th><th>비고</th></tr>
+<tr><td>BIGKinds(한국언론진흥재단)</td><td>○</td><td>유상(정황)</td><td>공공·연구기관용 정식 경로. 1순위</td></tr>
+<tr><td>연합뉴스 직접 데이터계약</td><td>○</td><td>유상</td><td>기관 직접계약 용이</td></tr>
+<tr><td>공공데이터포털 KPF 데이터셋</td><td>✕(메타)</td><td>무료</td><td>보조용</td></tr>
+<tr><td>GDELT</td><td>△</td><td>무료</td><td>글로벌 이슈·baseline·교차검증</td></tr>
+</table>
+<div class="warn box">
+BIGKinds 오픈API는 최근 <b>일반 이용 유상화</b> 정황 → 정확한 조건은 KPF 뉴스빅데이터팀(02-2001-7574) 확인 필요.<br>
+<b>copyright-by-design:</b> 기사 본문은 해시·임베딩 후 폐기하고 <b>추출된 구조화 사실(이벤트)만 보존</b>. 외부 LLM 전송 시 라이선스 범위·역외전송 별도 확인.
+</div>
+
+<h2>6. 구현 전 합의할 설계 포인트</h2>
+<ol>
+<li><b>노드 정의</b> — 이벤트 노드 vs 엔티티/event_type 레이어. centrality 안정성과 직결. (Wikidata 링킹 권장)</li>
+<li><b>예측↔실현 병합 규칙</b> — 기사 A의 consequence(예측)와 기사 B의 core(사실)가 매칭될 때: (a) 단일 노드 병합 vs <b>(b) 별도 노드 + <code>REALIZED_AS</code> 엣지(권장, lead-lag 추적 유리)</b>.</li>
+<li><b>baseline부터 이기기</b> — 단순 키워드 지수 + Track A를 먼저 만들고, 복잡한 인과그래프 Track B가 실제로 능가하는지 확인.</li>
+<li><b>추출 정량평가</b> — 현재 기사 2건 정성평가뿐. 필드 정확도·core 1개 준수율·is_factual 오류율 벤치마크 필요.</li>
+</ol>
+
+<h2>7. 레포 &amp; 협업</h2>
+<pre class="flow">bistro-news/
+├── README.md              프로젝트 개요·협업 가이드
+├── CLAUDE.md              파이프라인 상세 스펙 (단일 소스 오브 트루스)
+├── schemas/event_schema.json   이벤트 출력 계약(JSON Schema)
+├── prompts/               이벤트 추출 프롬프트 (기획팀 주 작업 영역)
+└── docs/                  요약·온보딩·회의 자료</pre>
+<ul>
+<li>프롬프트 개선 → <code>prompts/</code>, 변경 이유를 커밋 메시지에.</li>
+<li>출력 필드/enum 변경 → <code>schemas/event_schema.json</code>을 <b>먼저 합의</b> 후 수정.</li>
+<li><code>main</code> 직접 푸시 대신 기능 브랜치 + PR 권장.</li>
+</ul>
+
+<p class="sub" style="margin-top:24px; border-top:1px solid #ddd; padding-top:8px;">
+BISTRO-News · github.com/shezgone/bistro-news · 본 문서는 docs/onboarding.html에서 생성됨
+</p>
+
+</body>
+</html>

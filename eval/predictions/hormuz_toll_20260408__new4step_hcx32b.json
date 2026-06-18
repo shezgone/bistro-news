@@ -1,0 +1,22 @@
+{
+  "article_id": "hormuz_toll_20260408",
+  "title": "호르무즈 통행료 체계 / 美·이란 휴전",
+  "config_id": "new4step_hcx32b",
+  "family": "new_4step",
+  "model": "HCX-32B",
+  "core_event": {
+    "who": "미국과 이란",
+    "what": "2주 휴전 협상 타결",
+    "when": "2026년 4월 7일 오후 8시(미국 동부시간) 88분 전",
+    "where": "호르무즈 해협",
+    "why": "해협 항행 재개 여건 마련 및 통행세 부과 구상 합의 기반",
+    "how": "극적 협상 타결",
+    "event_type": "GEOPOLITICAL",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "기사 존재의 직접 원인인 확정된 휴전 타결 사건으로 C1~C4 모두 충족"
+  },
+  "parse_status": "json+core_event",
+  "raw_core": "{ \"candidates\": [ { \n\"what\": \"미국과 이란이 호르무즈 해협 선박 통행세 부과 구상에 기본 합의\", \n\"is_factual\": false,\n \"factual_basis\": \"기사 해석 및 AP통신 익명 관계자 인용\" }, \n{ \"what\": \"2주 휴전 협상 타결로 호르무즈 해협 항행 재개 여건 마련\",\n \"is_factual\": true, \n\"factual_basis\": \"트럼프 대통령 시한 88분 전 극적 타결 명시\" }, {\n \"what\": \"이란 외무장관 성명에서 휴전 기간 안전한 항행 가능 발표\", \n\"is_factual\": true, \"factual_basis\": \"압바스 아라그치 이란 외무장관 공식 성명\" } ], \n\n\"core_event\": { \"who\": \"미국과 이란\", \"what\": \"2주 휴전 협상 타결\", \n\"when\": \"2026년 4월 7일 오후 8시(미국 동부시간) 88분 전\", \n\"where\": \"호르무즈 해협\", \"why\": \"해협 항행 재개 여건 마련 및 통행세 부과 구상 합의 기반\",\n \"how\": \"극적 협상 타결\", \n\"event_type\": \"GEOPOLITICAL\", \n\"is_factual\": true, \"is_ongoing\": false, \n\"select_reason\": \"기사 존재의 직접 원인인 확정된 휴전 타결 사건으로 C1~C4 모두 충족\" }, \n\"extraction_quality\": { \n\"core_event_completeness\": 0.8, \n\"has_quantitative_data\": false, \n\"extraction_confidence\": 0.9, \"\nevidence_quality\": \"M\", \"flags\": [] } }",
+  "raw_block": "{ \"candidates\": [ { \n\"what\": \"미국과 이란이 호르무즈 해협 선박 통행세 부과 구상에 기본 합의\", \n\"is_factual\": false,\n \"factual_basis\": \"기사 해석 및 AP통신 익명 관계자 인용\" }, \n{ \"what\": \"2주 휴전 협상 타결로 호르무즈 해협 항행 재개 여건 마련\",\n \"is_factual\": true, \n\"factual_basis\": \"트럼프 대통령 시한 88분 전 극적 타결 명시\" }, {\n \"what\": \"이란 외무장관 성명에서 휴전 기간 안전한 항행 가능 발표\", \n\"is_factual\": true, \"factual_basis\": \"압바스 아라그치 이란 외무장관 공식 성명\" } ], \n\n\"core_event\": { \"who\": \"미국과 이란\", \"what\": \"2주 휴전 협상 타결\", \n\"when\": \"2026년 4월 7일 오후 8시(미국 동부시간) 88분 전\", \n\"where\": \"호르무즈 해협\", \"why\": \"해협 항행 재개 여건 마련 및 통행세 부과 구상 합의 기반\",\n \"how\": \"극적 협상 타결\", \n\"event_type\": \"GEOPOLITICAL\", \n\"is_factual\": true, \"is_ongoing\": false, \n\"select_reason\": \"기사 존재의 직접 원인인 확정된 휴전 타결 사건으로 C1~C4 모두 충족\" }, \n\"extraction_quality\": { \n\"core_event_completeness\": 0.8, \n\"has_quantitative_data\": false, \n\"extraction_confidence\": 0.9, \"\nevidence_quality\": \"M\", \"flags\": [] } }"
+}

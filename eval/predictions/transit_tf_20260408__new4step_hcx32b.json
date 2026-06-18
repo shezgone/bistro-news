@@ -1,0 +1,22 @@
+{
+  "article_id": "transit_tf_20260408",
+  "title": "출퇴근 혼잡완화 범정부 TF 발족",
+  "config_id": "new4step_hcx32b",
+  "family": "new_4step",
+  "model": "HCX-32B",
+  "core_event": {
+    "who": "국토교통부 대도시권광역교통위원회",
+    "what": "대중교통 활성화 및 출퇴근 혼잡 완화 범정부 TF 발족",
+    "when": "2026년 4월 7일",
+    "where": "대한민국",
+    "why": "중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 혼잡 해소",
+    "how": "재정경제부, 행정안전부 등 관계 부처 참여",
+    "event_type": "REGULATION",
+    "is_factual": true,
+    "is_ongoing": false,
+    "select_reason": "TF 발족은 기사의 핵심 사실로, 정부 기관의 공식 결정이며 C1~C4 기준을 모두 충족함"
+  },
+  "parse_status": "json+core_event",
+  "raw_core": "{ \"candidates\": [ { \"what\": \"국토교통부 대도시권광역교통위원회가 범정부 TF를 발족함\", \"is_factual\": true, \"factual_basis\": \"국토교통부 대도시권광역교통위원회가 공식 발표함\" }, \n{ \"what\": \"이달 말 대중교통 혼잡 완화 대책 발표 계획\", \"is_factual\": false, \"factual_basis\": \"계획 단계로 아직 실행 전\" }, \n{ \"what\": \"출퇴근 시간 외 대중교통 인센티브 부여 검토 중\", \"is_factual\": false, \"factual_basis\": \"검토 중인 사항으로 확정되지 않음\" } ],  \n\n\"core_event\": { \n\"who\": \"국토교통부 대도시권광역교통위원회\", \n\"what\": \"대중교통 활성화 및 출퇴근 혼잡 완화 범정부 TF 발족\", \n\"when\": \"2026년 4월 7일\", \n\"where\": \"대한민국\", \n\"why\": \"중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 혼잡 해소\",\n \"how\": \"재정경제부, 행정안전부 등 관계 부처 참여\",\n \"event_type\": \"REGULATION\", \n\"is_factual\": true,\n \"is_ongoing\": false, \n\n\"select_reason\": \"TF 발족은 기사의 핵심 사실로, 정부 기관의 공식 결정이며 C1~C4 기준을 모두 충족함\" },\n \"extraction_quality\": { \n\"core_event_completeness\": 0.9,\n \"has_quantitative_data\": false,\n \"extraction_confidence\": 0.95,\n \"evidence_quality\": \"H\", \n\"flags\": [] } }",
+  "raw_block": "{ \"candidates\": [ { \"what\": \"국토교통부 대도시권광역교통위원회가 범정부 TF를 발족함\", \"is_factual\": true, \"factual_basis\": \"국토교통부 대도시권광역교통위원회가 공식 발표함\" }, \n{ \"what\": \"이달 말 대중교통 혼잡 완화 대책 발표 계획\", \"is_factual\": false, \"factual_basis\": \"계획 단계로 아직 실행 전\" }, \n{ \"what\": \"출퇴근 시간 외 대중교통 인센티브 부여 검토 중\", \"is_factual\": false, \"factual_basis\": \"검토 중인 사항으로 확정되지 않음\" } ],  \n\n\"core_event\": { \n\"who\": \"국토교통부 대도시권광역교통위원회\", \n\"what\": \"대중교통 활성화 및 출퇴근 혼잡 완화 범정부 TF 발족\", \n\"when\": \"2026년 4월 7일\", \n\"where\": \"대한민국\", \n\"why\": \"중동 전쟁으로 인한 고유가 위기 극복 및 출퇴근 혼잡 해소\",\n \"how\": \"재정경제부, 행정안전부 등 관계 부처 참여\",\n \"event_type\": \"REGULATION\", \n\"is_factual\": true,\n \"is_ongoing\": false, \n\n\"select_reason\": \"TF 발족은 기사의 핵심 사실로, 정부 기관의 공식 결정이며 C1~C4 기준을 모두 충족함\" },\n \"extraction_quality\": { \n\"core_event_completeness\": 0.9,\n \"has_quantitative_data\": false,\n \"extraction_confidence\": 0.95,\n \"evidence_quality\": \"H\", \n\"flags\": [] } }"
+}
